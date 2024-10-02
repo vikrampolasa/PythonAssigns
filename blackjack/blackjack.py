@@ -32,6 +32,8 @@ def value_of_cards(p_d_cards):
         else:
             return sum_card
 
+player_name = input("Enter your name: ")
+clear_output()
 player_interested = 'y'
 while (player_interested == 'y'):
     card = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
@@ -51,7 +53,7 @@ while (player_interested == 'y'):
     
     #print(f"Your cards: {player_cards[0]}, {player_cards[1]}. Value is {player_card_value}")
     print(f"Dealer cards: {dealer_cards[0]}, HIDDEN")    
-    print(f"Player card: {player_cards}, Total: {player_card_value}")
+    print(f"{player_name}'s cards: {player_cards}, Total: {player_card_value}")
     print()
 
     if (player_card_value == 21):
@@ -62,7 +64,7 @@ while (player_interested == 'y'):
             if (player_new_card == 'y'):
                 add_cards (player_cards, pack)
                 player_card_value = value_of_cards(player_cards)
-                print(f"Your cards: {player_cards}. Value is {player_card_value}")
+                print(f"{player_name}'s cards: {player_cards}. Value is {player_card_value}")
         
                 if (player_card_value > 21):
                     break
@@ -76,20 +78,20 @@ while (player_interested == 'y'):
                 dealer_card_value = value_of_cards(dealer_cards)
         
             if (dealer_card_value > 21):
-                print ("Player WON!")
+                print (f"{player_name} WON!")
             elif (dealer_card_value > player_card_value):
                 print ("Dealer WON!")
             elif (player_card_value > dealer_card_value):
-                print ("Player WON!")
+                print (f"{player_name} WON!")
             elif (player_card_value == dealer_card_value):    
                 print ("It's a TIE!")
     
         print()
         print (f"Dealer: {dealer_card_value} -- {dealer_cards}")
-        print (f"Player: {player_card_value}  --  {player_cards}")
+        print (f"{player_name}: {player_card_value}  --  {player_cards}")
         
     print()
-    player_interested = input("Another game? 'y'-yes, 'n'-no: ")
+    player_interested = input(f"Another game, {player_name}? 'y'-yes, 'n'-no: ")
     clear_output()
 
 
