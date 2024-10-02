@@ -53,37 +53,41 @@ while (player_interested == 'y'):
     print(f"Dealer cards: {dealer_cards[0]}, HIDDEN")    
     print(f"Player card: {player_cards}, Total: {player_card_value}")
     print()
-    
-    while (player_new_card == 'y'):
-        player_new_card = input("Type 'y' to get another card, type 'n' to pass: ")
-        if (player_new_card == 'y'):
-            add_cards (player_cards, pack)
-            player_card_value = value_of_cards(player_cards)
-            print(f"Your cards: {player_cards}. Value is {player_card_value}")
-    
-            if (player_card_value > 21):
-                break
 
-    print()
-    if (player_card_value > 21):
-        print ("Dealer WON!")
+    if (player_card_value == 21):
+        print ("Player WON!")
     else:
-        while (dealer_card_value < 17):
-            add_cards (dealer_cards, pack)
-            dealer_card_value = value_of_cards(dealer_cards)
+        while (player_new_card == 'y'):
+            player_new_card = input("Type 'y' to get another card, type 'n' to pass: ")
+            if (player_new_card == 'y'):
+                add_cards (player_cards, pack)
+                player_card_value = value_of_cards(player_cards)
+                print(f"Your cards: {player_cards}. Value is {player_card_value}")
+        
+                if (player_card_value > 21):
+                    break
     
-        if (dealer_card_value > 21):
-            print ("Player WON!")
-        elif (dealer_card_value > player_card_value):
+        print()
+        if (player_card_value > 21):
             print ("Dealer WON!")
-        elif (player_card_value > dealer_card_value):
-            print ("Player WON!")
-        elif (player_card_value == dealer_card_value):    
-            print ("It's a TIE!")
-
-    print()
-    print (f"Dealer: {dealer_card_value} -- {dealer_cards}")
-    print (f"Player: {player_card_value}  --  {player_cards}")
+        else:
+            while (dealer_card_value < 17):
+                add_cards (dealer_cards, pack)
+                dealer_card_value = value_of_cards(dealer_cards)
+        
+            if (dealer_card_value > 21):
+                print ("Player WON!")
+            elif (dealer_card_value > player_card_value):
+                print ("Dealer WON!")
+            elif (player_card_value > dealer_card_value):
+                print ("Player WON!")
+            elif (player_card_value == dealer_card_value):    
+                print ("It's a TIE!")
+    
+        print()
+        print (f"Dealer: {dealer_card_value} -- {dealer_cards}")
+        print (f"Player: {player_card_value}  --  {player_cards}")
+        
     print()
     player_interested = input("Another game? 'y'-yes, 'n'-no: ")
     clear_output()
